@@ -1,0 +1,1 @@
+insert into SUPERHEROS values('1000', 'Superman');
