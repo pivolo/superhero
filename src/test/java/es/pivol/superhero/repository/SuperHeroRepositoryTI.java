@@ -1,13 +1,10 @@
 package es.pivol.superhero.repository;
 
 import es.pivol.superhero.model.SuperHero;
-import lombok.AllArgsConstructor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.stereotype.Component;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -19,8 +16,6 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
 @Sql("/data-h2.sql")
 public class SuperHeroRepositoryTI {
-    //@Autowired
-    //private TestEntityManager entityManager;
     @Autowired
     private SuperHeroRepository sut;
 
