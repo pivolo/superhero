@@ -1,0 +1,5 @@
+CREATE TABLE SUPER_HEROES
+(
+    id   INT          NOT NULL,
+    name VARCHAR(500) NOT NULL
+);
