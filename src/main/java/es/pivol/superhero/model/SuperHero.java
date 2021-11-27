@@ -1,11 +1,15 @@
 package es.pivol.superhero.model;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "SUPERHEROS")
 public class SuperHero {
     @Id

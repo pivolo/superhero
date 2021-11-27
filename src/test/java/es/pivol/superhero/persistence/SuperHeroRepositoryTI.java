@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
-@Sql("/data-h2.sql")
+@Sql("/data-h2-test.sql")
 public class SuperHeroRepositoryTI {
     @Autowired
     private SuperHeroRepository sut;
