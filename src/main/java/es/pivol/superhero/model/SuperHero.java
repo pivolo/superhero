@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "SUPERHEROS")
+@Table(name = "SUPER_HEROES")
 public class SuperHero {
     @Id
     @GeneratedValue(generator = "SEC", strategy = GenerationType.AUTO)
