@@ -6,10 +6,11 @@ import javax.persistence.*;
 
 @Entity
 @Data
+@Table(name = "SUPERHEROS")
 public class SuperHero {
     @Id
     @GeneratedValue(generator = "SEC", strategy = GenerationType.AUTO)
     @SequenceGenerator(name = "SEC", sequenceName = "SUPERHERO_SEC",allocationSize=1)
-    private Integer id;
+    private Long id;
     private String name;
 }
