@@ -1,0 +1,76 @@
+package es.pivol.superhero.restcontroller;
+
+import es.pivol.superhero.configuration.TestConfControllers;
+import es.pivol.superhero.model.SuperHero;
+import es.pivol.superhero.persistence.SuperHeroRepository;
+import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
+
+import java.util.Optional;
+
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@ExtendWith(SpringExtension.class)
+@WebMvcTest(SuperHeroController.class)
+@ContextConfiguration(classes = {TestConfControllers.class})
+class SuperHeroControllerTI {
+    private MockMvc mvc;
+    @Autowired
+    private WebApplicationContext webApplicationContext;
+    @Autowired
+    private SuperHeroRepository superHeroRepository;
+    @Autowired
+    private SuperHeroController sut;
+
+    @BeforeEach
+    public void beforeEach() {
+        mvc = MockMvcBuilders.standaloneSetup(sut).build();
+        when(superHeroRepository.findById(1l)).thenReturn(Optional.of(SuperHero.builder().id(1l).name("Superman").build()));
+    }
+
+    @Test
+    void getAll() {
+    }
+
+    @Test
+    void findById() throws Exception {
+        mvc.perform(MockMvcRequestBuilders
+                        .get("/api/superhero/{id}", 1)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk()).andExpect(MockMvcResultMatchers.jsonPath("$.employees").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").isNotEmpty());
+    }
+
+    @Test
+    void findByName() {
+    }
+
+    @Test
+    void create() {
+    }
+
+    @Test
+    void update() {
+    }
+
+    @Test
+    void delete() {
+    }
+}
