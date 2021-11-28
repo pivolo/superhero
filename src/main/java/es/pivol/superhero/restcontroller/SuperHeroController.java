@@ -2,6 +2,8 @@ package es.pivol.superhero.restcontroller;
 
 import es.pivol.superhero.model.SuperHero;
 import es.pivol.superhero.persistence.SuperHeroRepository;
+import es.pivol.superhero.restcontroller.exception.ResourceNotFoundException;
+import es.pivol.superhero.restcontroller.time.LogTime;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,7 @@ public class SuperHeroController {
 
 
     @GetMapping("{id}")
+    @LogTime
     public ResponseEntity<SuperHero> findById(@PathVariable long id){
         SuperHero superhero = superHeroRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("SuperHero not found: " + id));
@@ -41,6 +44,7 @@ public class SuperHeroController {
     }
 
     @PutMapping("{id}")
+
     public ResponseEntity<SuperHero> update(@PathVariable long id, @RequestBody SuperHero superHero){
         SuperHero superheroDB = superHeroRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("SuperHero not found: " + id));
