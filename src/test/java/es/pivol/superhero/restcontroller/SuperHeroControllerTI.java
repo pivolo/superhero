@@ -41,36 +41,19 @@ class SuperHeroControllerTI {
     @BeforeEach
     public void beforeEach() {
         mvc = MockMvcBuilders.standaloneSetup(sut).build();
-        when(superHeroRepository.findById(1l)).thenReturn(Optional.of(SuperHero.builder().id(1l).name("Superman").build()));
-    }
 
-    @Test
-    void getAll() {
     }
 
     @Test
     void findById() throws Exception {
+        when(superHeroRepository.findById(1l))
+                .thenReturn(Optional.of(SuperHero.builder().id(1l).name("Superman").build()));
         mvc.perform(MockMvcRequestBuilders
                         .get("/api/superhero/{id}", 1)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(status().isOk()).andExpect(MockMvcResultMatchers.jsonPath("$.employees").exists())
+                .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name").isNotEmpty());
     }
 
-    @Test
-    void findByName() {
-    }
-
-    @Test
-    void create() {
-    }
-
-    @Test
-    void update() {
-    }
-
-    @Test
-    void delete() {
-    }
 }
