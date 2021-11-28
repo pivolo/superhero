@@ -2,6 +2,7 @@ package es.pivol.superhero.restcontroller;
 
 import es.pivol.superhero.model.SuperHero;
 import es.pivol.superhero.persistence.SuperHeroRepository;
+import es.pivol.superhero.restcontroller.exception.ResourceNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
