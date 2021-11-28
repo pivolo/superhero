@@ -25,10 +25,10 @@ Funcionaría de forma similar al @Timed de Spring, pero imprimiendo la duración
 - Documentación de la API.
 - Poder cachear peticiones.
 - Test de integración (del repositorio y uno del controlador)
+- Utilizar alguna librería que facilite el mantenimiento de los scripts DDL de base de datos.
 
 Puntos opcionales de mejora pendientes:
 - Seguridad del API.
-- Utilizar alguna librería que facilite el mantenimiento de los scripts DDL de base de datos.
 
 
 
