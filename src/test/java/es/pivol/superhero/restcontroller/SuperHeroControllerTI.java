@@ -1,15 +1,12 @@
 package es.pivol.superhero.restcontroller;
 
-import es.pivol.superhero.configuration.TestConfControllers;
+import es.pivol.superhero.configuration.TestConfiguration;
 import es.pivol.superhero.model.SuperHero;
-import es.pivol.superhero.persistence.SuperHeroRepository;
-import org.aspectj.lang.annotation.Before;
-import org.junit.jupiter.api.BeforeAll;
+import es.pivol.superhero.service.SuperHeroService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
@@ -28,13 +25,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(SuperHeroController.class)
-@ContextConfiguration(classes = {TestConfControllers.class})
+@ContextConfiguration(classes = {TestConfiguration.class})
 class SuperHeroControllerTI {
     private MockMvc mvc;
     @Autowired
     private WebApplicationContext webApplicationContext;
     @Autowired
-    private SuperHeroRepository superHeroRepository;
+    private SuperHeroService superHeroService;
     @Autowired
     private SuperHeroController sut;
 
@@ -46,7 +43,7 @@ class SuperHeroControllerTI {
 
     @Test
     void findById() throws Exception {
-        when(superHeroRepository.findById(1l))
+        when(superHeroService.findById(1l))
                 .thenReturn(Optional.of(SuperHero.builder().id(1l).name("Superman").build()));
         mvc.perform(MockMvcRequestBuilders
                         .get("/api/superhero/{id}", 1)

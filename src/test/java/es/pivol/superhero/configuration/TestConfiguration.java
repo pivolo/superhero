@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan({"es.pivol.superhero"})
-public class TestConfControllers {
+public class TestConfiguration {
     @MockBean
     SuperHeroRepository superHeroRepository;
 }
