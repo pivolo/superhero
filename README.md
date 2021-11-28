@@ -24,9 +24,9 @@ Funcionaría de forma similar al @Timed de Spring, pero imprimiendo la duración
 - Presentar la aplicación dockerizada.
 - Documentación de la API.
 - Poder cachear peticiones.
+- Test de integración (del repositorio y uno del controlador)
 
 Puntos opcionales de mejora pendientes:
-- Test de integración.
 - Seguridad del API.
 - Utilizar alguna librería que facilite el mantenimiento de los scripts DDL de base de datos.
 
